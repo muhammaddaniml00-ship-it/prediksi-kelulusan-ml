@@ -1,0 +1,10 @@
+# Daftar library (alat) yang dibutuhkan project ini.
+# Cara install:  pip install -r requirements.txt
+#
+# Versi dibiarin default (tidak dipasang) supaya install yang terbaru.
+# Untuk pemula versi spesifik gak terlalu penting.
+
+numpy          # hitung angka & array
+pandas         # atur data seperti tabel Excel
+matplotlib     # bikin grafik
+scikit-learn   # library Machine Learning

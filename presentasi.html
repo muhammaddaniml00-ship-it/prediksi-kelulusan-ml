@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<title>Prediksi Kelulusan - M Dani Zainur Rahman</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  height: 100vh; width: 100vw;
+  overflow: hidden;
+  background: #0a0a1a;
+  color: #f0f0ff;
+}
+
+/* background */
+.bg {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(120,40,200,0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(0,180,255,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 85%, rgba(255,60,120,0.2) 0%, transparent 50%),
+    #0a0a1a;
+}
+.bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+.blob {
+  position: fixed; border-radius: 50%;
+  filter: blur(80px); opacity: 0.15; z-index: 0;
+  animation: drift 14s ease-in-out infinite;
+}
+.b1 { width:420px;height:420px;background:#7c3aed;top:-120px;left:-100px;animation-delay:0s; }
+.b2 { width:360px;height:360px;background:#0ea5e9;bottom:-90px;right:-70px;animation-delay:-5s; }
+.b3 { width:300px;height:300px;background:#ec4899;top:38%;left:58%;animation-delay:-10s; }
+
+@keyframes drift {
+  0%,100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-28px) scale(1.04); }
+}
+
+/* slides */
+.deck { position:relative;z-index:1;width:100%;height:100vh; }
+
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 56px 80px;
+  opacity: 0; pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.slide.on { opacity:1; pointer-events:all; transform:translateY(0); }
+
+/* glass */
+.g {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-radius: 22px;
+  padding: 32px 40px;
+}
+.gs {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 22px 26px;
+}
+
+/* type */
+.eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 12px;
+}
+h1 { font-size: 54px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+h2 { font-size: 38px; font-weight: 700; color: #f0f0ff; letter-spacing: -0.5px; }
+.muted { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+.gt { background: linear-gradient(90deg,#a78bfa,#38bdf8,#34d399);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent; }
+.gp { background: linear-gradient(90deg,#f472b6,#fb923c);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent; }
+.gb { background: linear-gradient(90deg,#38bdf8,#818cf8);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent; }
+
+/* grid */
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; width:100%; }
+.g2 { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; width:100%; }
+
+/* icon card */
+.ic .icon { font-size:34px; margin-bottom:12px; }
+.ic h3 { font-size:16px; font-weight:700; color:#e2e8f0; margin-bottom:6px; }
+.ic p  { font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6; }
+
+/* steps */
+.step {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:14px 20px;
+  background:rgba(255,255,255,0.045);
+  border-left:3px solid #a78bfa; border-radius:12px;
+}
+.sn { font-size:24px;font-weight:800;color:#a78bfa;min-width:32px;line-height:1; }
+.step h3 { font-size:15px;color:#f0f0ff;margin-bottom:3px; }
+.step p  { font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5; }
+
+/* table */
+.tbl { width:100%;border-collapse:collapse; }
+.tbl th {
+  padding:12px 16px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  color:#a78bfa;border-bottom:1px solid rgba(167,139,250,0.25);text-align:left;
+}
+.tbl td {
+  padding:11px 16px;font-size:14px;color:rgba(255,255,255,0.65);
+  border-bottom:1px solid rgba(255,255,255,0.055);
+}
+.bdg { display:inline-block;padding:2px 12px;border-radius:20px;font-size:12px;font-weight:700; }
+.bg { background:rgba(52,211,153,0.12);color:#34d399;border:1px solid rgba(52,211,153,0.25); }
+.br { background:rgba(248,113,113,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.25); }
+
+/* neighbor */
+.nb {
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;border-radius:10px;font-size:13px;
+}
+.nbg { background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.18); }
+.nbr { background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.18); }
+.dot { width:11px;height:11px;border-radius:50%;flex-shrink:0; }
+.dg { background:#34d399; } .dr { background:#f87171; }
+.nb .lbl { color:rgba(255,255,255,0.6);flex:1; }
+.nb .res { font-weight:700; }
+.nbg .res { color:#34d399; } .nbr .res { color:#f87171; }
+
+.vbox {
+  text-align:center;padding:16px;
+  background:rgba(248,113,113,0.08);
+  border:1px solid rgba(248,113,113,0.25);border-radius:12px;
+}
+.vbox .vl { font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:5px; }
+.vbox .vv { font-size:24px;font-weight:800;color:#f87171; }
+
+/* image */
+.imgw img { width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.08); }
+
+/* progress */
+.pbar { position:fixed;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.07);z-index:50; }
+.pfill { height:100%;background:linear-gradient(90deg,#a78bfa,#38bdf8,#34d399);transition:width 0.4s; }
+
+/* nav */
+.nav {
+  position:fixed;bottom:24px;right:32px;
+  display:flex;align-items:center;gap:10px;z-index:50;
+}
+.nav button {
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);
+  color:#f0f0ff;padding:9px 20px;border-radius:9px;font-size:14px;cursor:pointer;
+  backdrop-filter:blur(10px);transition:background 0.2s,transform 0.1s;
+}
+.nav button:hover { background:rgba(255,255,255,0.14);transform:translateY(-1px); }
+.nav button:active { transform:translateY(0); }
+.nav button:disabled { opacity:0.2;cursor:default;transform:none; }
+.nav .cnt { font-size:13px;color:rgba(255,255,255,0.25);min-width:44px;text-align:center; }
+
+.snum { position:fixed;top:24px;left:32px;font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:2px;z-index:50; }
+.auth { position:fixed;bottom:18px;left:32px;font-size:11px;color:rgba(255,255,255,0.18);z-index:50; }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<div class="deck">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide on">
+    <div style="max-width:780px;width:100%;text-align:center;">
+      <div class="eyebrow" style="text-align:center;">Tugas Machine Learning</div>
+      <h1 style="margin-bottom:22px;">
+        Prediksi Kelulusan Siswa<br>
+        <span class="gt">dengan Machine Learning</span>
+      </h1>
+      <p class="muted" style="text-align:center;margin:0 auto 38px;max-width:560px;">
+        Implementasi model klasifikasi sederhana untuk memprediksi
+        hasil ujian siswa berdasarkan kebiasaan belajar.
+      </p>
+      <div class="g" style="display:inline-flex;gap:36px;padding:18px 44px;">
+        <div style="text-align:center;">
+          <div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);margin-bottom:5px;">ALGORITMA</div>
+          <div style="font-size:15px;font-weight:700;color:#a78bfa;">K-Nearest Neighbors</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div style="text-align:center;">
+          <div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);margin-bottom:5px;">TOOLS</div>
+          <div style="font-size:15px;font-weight:700;color:#38bdf8;">Python &amp; scikit-learn</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div style="text-align:center;">
+          <div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.3);margin-bottom:5px;">DISUSUN OLEH</div>
+          <div style="font-size:15px;font-weight:700;color:#34d399;">M Dani Zainur Rahman</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: APA ITU ML -->
+  <div class="slide">
+    <div style="max-width:900px;width:100%;">
+      <div class="eyebrow">Latar Belakang</div>
+      <h2 style="margin-bottom:8px;">Apa itu <span class="gb">Machine Learning?</span></h2>
+      <p class="muted" style="margin-bottom:28px;font-size:15px;">
+        Cabang kecerdasan buatan yang memungkinkan komputer belajar dari data secara otomatis.
+      </p>
+      <div class="g3" style="gap:14px;">
+        <div class="gs ic">
+          <div class="icon">📋</div>
+          <h3>Pemrograman Konvensional</h3>
+          <p>Aturan ditulis manual oleh programmer. Semakin kompleks masalah, semakin sulit dikelola.</p>
+        </div>
+        <div class="gs ic" style="border-color:rgba(167,139,250,0.25);">
+          <div class="icon">🤖</div>
+          <h3>Machine Learning</h3>
+          <p>Model <span style="color:#a78bfa;font-weight:600;">menemukan pola sendiri</span> dari data latih tanpa aturan eksplisit dari programmer.</p>
+        </div>
+        <div class="gs ic">
+          <div class="icon">🎯</div>
+          <h3>Fokus Project</h3>
+          <p>Prediksi apakah siswa <span style="color:#34d399;font-weight:600;">lulus</span> atau <span style="color:#f87171;font-weight:600;">tidak lulus</span> berdasarkan jam belajar dan jam tidur.</p>
+        </div>
+      </div>
+      <div class="g" style="margin-top:18px;padding:18px 28px;display:flex;align-items:center;gap:14px;">
+        <span style="font-size:26px;">💡</span>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.65;">
+          Project ini menggunakan <strong style="color:#f0f0ff;">Supervised Learning</strong> — 
+          model dilatih menggunakan data yang sudah memiliki label (output yang diketahui).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: DATASET -->
+  <div class="slide">
+    <div style="max-width:860px;width:100%;">
+      <div class="eyebrow">Data</div>
+      <h2 style="margin-bottom:8px;">Dataset yang Digunakan</h2>
+      <p class="muted" style="margin-bottom:24px;font-size:15px;">20 data siswa dengan 2 fitur dan 1 label.</p>
+      <div class="g" style="padding:0;overflow:hidden;margin-bottom:18px;">
+        <table class="tbl">
+          <thead>
+            <tr><th>No</th><th>Jam Belajar</th><th>Jam Tidur</th><th>Label</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>1 jam</td><td>4 jam</td><td><span class="bdg br">Tidak Lulus</span></td></tr>
+            <tr><td>2</td><td>2 jam</td><td>6 jam</td><td><span class="bdg br">Tidak Lulus</span></td></tr>
+            <tr><td>3</td><td>3 jam</td><td>6 jam</td><td><span class="bdg bg">Lulus</span></td></tr>
+            <tr><td>4</td><td>4 jam</td><td>7 jam</td><td><span class="bdg bg">Lulus</span></td></tr>
+            <tr><td>5</td><td>5 jam</td><td>5 jam</td><td><span class="bdg bg">Lulus</span></td></tr>
+            <tr><td colspan="4" style="color:rgba(255,255,255,0.2);font-style:italic;font-size:12px;">... 15 data lainnya</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="g2" style="gap:14px;">
+        <div class="gs" style="display:flex;align-items:center;gap:14px;">
+          <span style="font-size:26px;">📥</span>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-bottom:4px;">FITUR (INPUT X)</div>
+            <div style="font-size:14px;font-weight:600;color:#38bdf8;">Jam Belajar + Jam Tidur</div>
+          </div>
+        </div>
+        <div class="gs" style="display:flex;align-items:center;gap:14px;">
+          <span style="font-size:26px;">📤</span>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-bottom:4px;">LABEL (OUTPUT y)</div>
+            <div style="font-size:14px;font-weight:600;color:#a78bfa;">Lulus (1) / Tidak Lulus (0)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: VISUALISASI DATA -->
+  <div class="slide">
+    <div style="max-width:940px;width:100%;">
+      <div class="eyebrow">Eksplorasi Data</div>
+      <h2 style="margin-bottom:18px;">Distribusi Data Siswa</h2>
+      <div class="g2" style="align-items:start;">
+        <div class="gs imgw" style="padding:14px;">
+          <img src="grafik_kelulusan_1_data.png" alt="Distribusi data"/>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="gs">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1.5px;margin-bottom:10px;">LEGENDA</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <div style="width:13px;height:13px;border-radius:50%;background:#4ade80;"></div>
+              <span style="font-size:13px;color:rgba(255,255,255,0.65);">Siswa yang lulus ujian</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:13px;height:13px;border-radius:50%;background:#f87171;"></div>
+              <span style="font-size:13px;color:rgba(255,255,255,0.65);">Siswa yang tidak lulus</span>
+            </div>
+          </div>
+          <div class="gs">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1.5px;margin-bottom:8px;">OBSERVASI</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;">
+              Siswa dengan jam belajar rendah (&lt;3 jam) dominan tidak lulus.
+              Pola ini yang akan dipelajari oleh model KNN.
+            </p>
+          </div>
+          <div class="gs" style="border-color:rgba(167,139,250,0.2);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1.5px;margin-bottom:6px;">SPLIT DATA</div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.55);">
+              80% &rarr; <strong style="color:#a78bfa;">training</strong> (16 data)<br>
+              20% &rarr; <strong style="color:#38bdf8;">testing</strong> (4 data)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: ALGORITMA KNN -->
+  <div class="slide">
+    <div style="max-width:860px;width:100%;">
+      <div class="eyebrow">Metodologi</div>
+      <h2 style="margin-bottom:14px;"><span class="gp">K-Nearest Neighbors (KNN)</span></h2>
+      <div class="g" style="margin-bottom:18px;padding:16px 26px;text-align:center;">
+        <p style="font-size:17px;color:rgba(255,255,255,0.7);line-height:1.65;">
+          Klasifikasi berdasarkan <strong style="color:#a78bfa;">K data latih terdekat</strong> —
+          kelas mayoritas dari tetangga terdekat menjadi hasil prediksi.
+        </p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="step">
+          <div class="sn">1</div>
+          <div>
+            <h3>Hitung Jarak (Euclidean Distance)</h3>
+            <p>Hitung jarak antara data baru dengan seluruh data latih berdasarkan nilai fitur.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">2</div>
+          <div>
+            <h3>Pilih K Tetangga Terdekat</h3>
+            <p>Ambil K data dengan jarak terkecil. Pada eksperimen ini K = 5.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">3</div>
+          <div>
+            <h3>Majority Voting</h3>
+            <p>Kelas yang paling banyak muncul di antara K tetangga menjadi label prediksi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: HASIL PREDIKSI -->
+  <div class="slide">
+    <div style="max-width:980px;width:100%;">
+      <div class="eyebrow">Hasil</div>
+      <h2 style="margin-bottom:18px;">Prediksi <span class="gt">Siswa Baru</span></h2>
+      <div class="g2" style="align-items:start;gap:18px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="gs" style="padding:14px 18px;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-bottom:10px;">INPUT SISWA BARU</div>
+            <div style="display:flex;gap:24px;">
+              <div style="text-align:center;">
+                <div style="font-size:32px;font-weight:800;color:#38bdf8;">3</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.35);">Jam Belajar</div>
+              </div>
+              <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+              <div style="text-align:center;">
+                <div style="font-size:32px;font-weight:800;color:#a78bfa;">6</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.35);">Jam Tidur</div>
+              </div>
+            </div>
+          </div>
+          <div class="gs" style="padding:14px 18px;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-bottom:10px;">5 TETANGGA TERDEKAT</div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <div class="nb nbg"><div class="dot dg"></div><span class="lbl">3 jam, 6 jam</span><span class="res">LULUS</span></div>
+              <div class="nb nbr"><div class="dot dr"></div><span class="lbl">2 jam, 6 jam</span><span class="res">TIDAK LULUS</span></div>
+              <div class="nb nbr"><div class="dot dr"></div><span class="lbl">2.5 jam, 5 jam</span><span class="res">TIDAK LULUS</span></div>
+              <div class="nb nbr"><div class="dot dr"></div><span class="lbl">3.5 jam, 5 jam</span><span class="res">TIDAK LULUS</span></div>
+              <div class="nb nbg"><div class="dot dg"></div><span class="lbl">4 jam, 5 jam</span><span class="res">LULUS</span></div>
+            </div>
+          </div>
+          <div class="vbox">
+            <div class="vl">3 dari 5 tetangga tidak lulus &rarr; hasil voting:</div>
+            <div class="vv">TIDAK LULUS</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="gs imgw" style="padding:12px;">
+            <img src="grafik_kelulusan_2_prediksi.png" alt="Prediksi"/>
+          </div>
+          <div class="gs" style="padding:12px 16px;">
+            <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:rgba(255,255,255,0.4);">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:18px;height:18px;border-radius:50%;border:2px solid gold;flex-shrink:0;"></div>
+                Lingkaran kuning = 5 tetangga terdekat
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#a78bfa;font-size:16px;">&#9733;</span>
+                Bintang ungu = posisi siswa baru
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: EVALUASI -->
+  <div class="slide">
+    <div style="max-width:860px;width:100%;">
+      <div class="eyebrow">Evaluasi</div>
+      <h2 style="margin-bottom:18px;">Performa <span class="gt">Model</span></h2>
+      <div class="g3" style="margin-bottom:18px;">
+        <div class="gs" style="text-align:center;border-color:rgba(52,211,153,0.25);">
+          <div style="font-size:50px;font-weight:800;color:#34d399;">100%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:6px;">Akurasi data uji</div>
+        </div>
+        <div class="gs" style="text-align:center;">
+          <div style="font-size:50px;font-weight:800;color:#38bdf8;">4/4</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:6px;">Prediksi benar</div>
+        </div>
+        <div class="gs" style="text-align:center;">
+          <div style="font-size:50px;font-weight:800;color:#a78bfa;">K=5</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:6px;">Jumlah tetangga</div>
+        </div>
+      </div>
+      <div class="g" style="padding:20px 28px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:2px;margin-bottom:10px;">ANALISIS</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;">
+          Akurasi 100% dicapai karena ukuran dataset yang kecil dan pola data yang relatif terpisah.
+          Pada dataset yang lebih besar dan kompleks, akurasi sempurna hampir tidak mungkin terjadi.
+          Nilai K juga berpengaruh signifikan — K terlalu kecil rentan overfitting, K terlalu besar bisa underfitting.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: PENUTUP -->
+  <div class="slide">
+    <div style="max-width:820px;width:100%;text-align:center;">
+      <div class="eyebrow" style="text-align:center;">Kesimpulan</div>
+      <h1 style="margin-bottom:14px;"><span class="gt">Terima Kasih</span></h1>
+      <p class="muted" style="text-align:center;margin:0 auto 32px;max-width:560px;">
+        Machine Learning memungkinkan sistem untuk belajar dari data dan
+        membuat keputusan tanpa diprogram secara eksplisit.
+      </p>
+      <div class="g2" style="max-width:640px;margin:0 auto 28px;gap:14px;text-align:left;">
+        <div class="gs">
+          <div style="font-size:10px;color:rgba(255,255,255,0.28);letter-spacing:2px;margin-bottom:10px;">YANG DIPELAJARI</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.9;">
+            &rsaquo; Supervised Learning<br>
+            &rsaquo; Algoritma KNN<br>
+            &rsaquo; Train/test split<br>
+            &rsaquo; Evaluasi akurasi model
+          </div>
+        </div>
+        <div class="gs">
+          <div style="font-size:10px;color:rgba(255,255,255,0.28);letter-spacing:2px;margin-bottom:10px;">TOOLS</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.9;">
+            &rsaquo; Python 3.12<br>
+            &rsaquo; scikit-learn<br>
+            &rsaquo; pandas &amp; numpy<br>
+            &rsaquo; matplotlib
+          </div>
+        </div>
+      </div>
+      <div class="g" style="display:inline-block;padding:12px 32px;">
+        <span style="font-size:12px;color:rgba(255,255,255,0.3);">Disusun oleh &nbsp;</span>
+        <span style="font-size:14px;font-weight:700;" class="gt">M Dani Zainur Rahman</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="pbar"><div class="pfill" id="pf"></div></div>
+<div class="snum" id="sn">01 / 08</div>
+<div class="auth">M Dani Zainur Rahman</div>
+
+<div class="nav">
+  <button id="bp" onclick="go(-1)" disabled>&#8592;</button>
+  <span class="cnt" id="ct">1 / 8</span>
+  <button id="bn" onclick="go(1)">&#8594;</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total  = slides.length;
+  let cur = 0;
+
+  function go(d) {
+    slides[cur].classList.remove('on');
+    cur = Math.max(0, Math.min(total - 1, cur + d));
+    slides[cur].classList.add('on');
+    const n = cur + 1;
+    document.getElementById('ct').textContent = n + ' / ' + total;
+    document.getElementById('sn').textContent = String(n).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+    document.getElementById('bp').disabled = cur === 0;
+    document.getElementById('bn').disabled = cur === total - 1;
+    document.getElementById('pf').style.width = (n / total * 100) + '%';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); go(1); }
+    if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); go(-1); }
+  });
+
+  document.getElementById('pf').style.width = (1 / total * 100) + '%';
+</script>
+</body>
+</html>

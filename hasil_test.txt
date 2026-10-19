@@ -1,0 +1,5 @@
+Python: 3.12.10
+OK: numpy, pandas, matplotlib, scikit-learn SUDAH terinstall
+numpy 2.5.4
+pandas 3.0.6
+sklearn 1.9.1
